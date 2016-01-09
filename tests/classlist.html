@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>classList.js tests</title>
+<style>
+  textarea {
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+  <h1>Test toString()</h1>
+  <ul class="some someone _something -thing" id="test1">
+    <li>Expected Result: <strong>some someone _something -thing</strong></li>
+    <li >Actual Result: <strong id="test1-result"></strong></li>
+  </ul>
+
+  <h1>Test add()</h1>
+  <ul class="some someone _something -thing" id="test2">
+    <li>Expected Result: <strong>some someone _something -thing thing</strong></li>
+    <li >Actual Result: <strong id="test2-result"></strong></li>
+  </ul>
+
+  <h1>Test remove()</h1>
+  <ul class="some someone _something -thing" id="test3">
+    <li>Expected Result: <strong>someone _something -thing</strong></li>
+    <li >Actual Result: <strong id="test3-result"></strong></li>
+  </ul>
+
+  <h1>Test toggle()</h1>
+  <ul class="some someone _something -thing" id="test4">
+    <li>Expected Result: <strong>someone _something -thing one</strong></li>
+    <li >Actual Result: <strong id="test4-result"></strong></li>
+  </ul>
+    
+<script src="../classList.js"></script>
+<script>
+(function () {
+  var test1 = document.getElementById('test1');
+
+  document.getElementById('test1-result').innerHTML = test1.classList.toString();
+
+  var test2 = document.getElementById('test2');
+
+  test2.classList.add('thing');
+  document.getElementById('test2-result').innerHTML = test2.classList.toString();
+
+  var test3 = document.getElementById('test3');
+
+  test3.classList.remove('some');
+  document.getElementById('test3-result').innerHTML = test3.classList.toString();
+
+  var test4 = document.getElementById('test4');
+
+  test4.classList.toggle('some');
+  test4.classList.toggle('one');
+  document.getElementById('test4-result').innerHTML = test4.classList.toString();
+})();
+</script>
+</body>
+</html>
+
