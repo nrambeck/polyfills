@@ -24,7 +24,8 @@ DOMTokenList.prototype = {
     this.el.className = this.toString();
   },
   contains: function(token) {
-    return this.el.className.indexOf(token) != -1;
+    var regex = new RegExp("(^| )(?:" + token + ")($| )", "gi");
+    return this.el.className.match(regex) !== null;
   },
   item: function(index) {
     return this[index] || null;
